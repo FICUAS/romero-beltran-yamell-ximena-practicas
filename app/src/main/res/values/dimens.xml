@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="padding_main">16dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
+    <dimen name="jedi_icon_display">30dp</dimen>
+    <dimen name="spacer_medium">20dp</dimen>
+    <dimen name="spacer_small">8dp</dimen>
+    <dimen name="spacer_large">30dp</dimen>
+    <dimen name="font_kenobi">24sp</dimen>
+</resources>
