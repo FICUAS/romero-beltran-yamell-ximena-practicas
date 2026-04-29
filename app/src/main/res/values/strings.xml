@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">mobile-app-base-compose</string>
+    <string name="app_name">Mobile App Base</string>
+    <string name="hello_there">Hello There</string>
+    <string name="general_kenobi">General Kenobi</string>
+    <string name="high_ground">I have the High Ground</string>
+    <string name="jedi_icon_desc">Jedi Icon</string>
 </resources>

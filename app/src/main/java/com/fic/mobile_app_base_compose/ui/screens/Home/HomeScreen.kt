@@ -1,53 +1,103 @@
 package com.fic.mobile_app_base_compose.ui.screens.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.fic.mobile_app_base_compose.R
 
 @Composable
 fun HomeScreen() {
-    val lukeGreen = Color(0xFF00E676L)
+    val lukeGreen = Color(0xFF00E676)
+    val obiWanBlue = Color(0xFF00B0FF)
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(all = 16.dp),
+            .padding(dimensionResource(id = R.dimen.padding_main)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Hello There",
-            style = MaterialTheme.typography.headlineMedium
+            text = stringResource(id = R.string.hello_there),
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center
         )
 
-        Text(
-            text = "General Kenobi",
-            color = Color.Magenta,
-            style = MaterialTheme.typography.headlineMedium
-        )
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacer_medium)))
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = stringResource(id = R.string.jedi_icon_desc),
+                tint = obiWanBlue,
+                modifier = Modifier.size(dimensionResource(id = R.dimen.jedi_icon_display))
+            )
+
+            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.spacer_small)))
+
+            Text(
+                text = stringResource(id = R.string.general_kenobi),
+                color = Color.Magenta,
+                fontSize = dimensionResource(id = R.dimen.font_kenobi).value.sp,
+                style = MaterialTheme.typography.headlineMedium
+            )
+        }
+
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacer_medium)))
+
+        InfoField(label = "Rango", value = "Maestro Jedi")
+        InfoField(label = "Estrategia", value = "High Ground")
+        InfoField(label = "Ubicación", value = "Tatooine")
+
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacer_large)))
 
         Button(
-            onClick = { println("Botón presionado - Que la Fuerza te acompañe") },
+            onClick = { println("I have the High Ground") },
+            modifier = Modifier.fillMaxWidth(0.8f),
             colors = ButtonDefaults.buttonColors(
                 containerColor = lukeGreen,
                 contentColor = Color.Black
             )
         ) {
-            Text(text = "High Ground")
+            Text(text = stringResource(id = R.string.high_ground))
         }
+    }
+}
+
+@Composable
+fun InfoField(label: String, value: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = label,
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color.Gray
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color.White
+        )
     }
 }
