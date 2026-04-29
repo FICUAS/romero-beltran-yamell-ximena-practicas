@@ -8,12 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource 
-import androidx.compose.ui.res.stringResource   
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.fic.mobile_app_base_compose.R @Composable
+import com.fic.mobile_app_base_compose.R
+
+@Composable
 fun HomeScreen() {
     val lukeGreen = Color(0xFF00E676)
     val obiWanBlue = Color(0xFF00B0FF)
@@ -25,7 +28,6 @@ fun HomeScreen() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Text(
             text = stringResource(id = R.string.hello_there),
             style = MaterialTheme.typography.headlineLarge,
@@ -57,6 +59,12 @@ fun HomeScreen() {
             )
         }
 
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacer_medium)))
+
+        InfoField(label = "Rango", value = "Maestro Jedi")
+        InfoField(label = "Estrategia", value = "High Ground")
+        InfoField(label = "Ubicación", value = "Tatooine")
+
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacer_large)))
 
         Button(
@@ -69,5 +77,27 @@ fun HomeScreen() {
         ) {
             Text(text = stringResource(id = R.string.high_ground))
         }
+    }
+}
+
+@Composable
+fun InfoField(label: String, value: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = label,
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color.Gray
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color.White
+        )
     }
 }
